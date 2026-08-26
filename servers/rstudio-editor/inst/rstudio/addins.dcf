@@ -1,0 +1,9 @@
+Name: Start RStudio MCP session
+Description: Allow the local stdio MCP server to use this RStudio session.
+Binding: start_session
+Interactive: true
+
+Name: Stop RStudio MCP session
+Description: Disconnect this RStudio session from the local MCP server.
+Binding: stop_session
+Interactive: true

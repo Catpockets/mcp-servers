@@ -1,0 +1,33 @@
+Package: mcpstudio
+Title: MCP Access to the RStudio Editor
+Version: 0.1.0.9000
+Authors@R: person(
+    "Randell", "Smith",
+    email = "73455700+Catpockets@users.noreply.github.com",
+    role = c("aut", "cre")
+  )
+Description: Provides a local Model Context Protocol server that exposes
+    deliberate, annotated tools for inspecting and modifying live 'RStudio'
+    editor buffers and for executing bounded R code in the active session.
+    The server uses standard input and output plus authenticated same-user
+    inter-process communication; it does not open a network listener.
+License: MIT + file LICENSE
+URL: https://github.com/Catpockets/mcp-servers/tree/main/servers/rstudio-editor
+BugReports: https://github.com/Catpockets/mcp-servers/issues
+Depends:
+    R (>= 4.1.0)
+Imports:
+    ellmer (>= 0.4.2),
+    mcptools (>= 1.0.2),
+    rstudioapi (>= 0.19.0)
+Suggests:
+    jsonlite,
+    later,
+    pkgload,
+    processx,
+    testthat (>= 3.3.0),
+    withr
+Config/testthat/edition: 3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.1.0
