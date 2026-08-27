@@ -1,0 +1,46 @@
+name: Bug report
+description: Report a reproducible defect in an MCP server.
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: dropdown
+    id: server
+    attributes:
+      label: Server
+      options:
+        - RStudio Editor
+        - Repository infrastructure
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Observed behavior
+      description: Include exact errors and relevant non-sensitive logs.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Provide the smallest repeatable sequence.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, client, server version or commit, and target application version.
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Safety checks
+      options:
+        - label: I removed credentials, private data, and local socket material.
+          required: true
+        - label: This is not a security vulnerability.
+          required: true

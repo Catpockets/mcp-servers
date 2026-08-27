@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/Catpockets/mcp-servers/security/advisories/new
+    about: Report vulnerabilities privately.
+  - name: Support and design questions
+    url: https://github.com/Catpockets/mcp-servers/discussions
+    about: Ask setup questions or discuss future integrations.

@@ -1,0 +1,26 @@
+name: Feature request
+description: Propose a focused MCP capability or a new server.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: story
+    attributes:
+      label: User story
+      description: Who needs this, what do they need, and why?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Observable acceptance criteria
+    validations:
+      required: true
+  - type: textarea
+    id: security
+    attributes:
+      label: Security and compatibility implications
+      description: Cover transport, credentials, writes, code execution, platforms, and migrations.
+    validations:
+      required: true

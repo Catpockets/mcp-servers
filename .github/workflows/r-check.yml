@@ -1,0 +1,54 @@
+name: R package checks
+
+on:
+  pull_request:
+    paths:
+      - "servers/rstudio-editor/**"
+      - ".github/workflows/r-check.yml"
+  push:
+    branches:
+      - main
+    paths:
+      - "servers/rstudio-editor/**"
+      - ".github/workflows/r-check.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  r-cmd-check:
+    name: R CMD check (${{ matrix.config.os }})
+    runs-on: ${{ matrix.config.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        config:
+          - { os: ubuntu-latest, r: release }
+          - { os: macos-latest, r: release }
+          - { os: windows-latest, r: release }
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      R_KEEP_PKG_SOURCE: yes
+    defaults:
+      run:
+        working-directory: servers/rstudio-editor
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+      - name: Set up R
+        uses: r-lib/actions/setup-r@d3c5be51b12e724e68f33216ca3c148b66d5f0b6 # v2
+        with:
+          r-version: ${{ matrix.config.r }}
+          use-public-rspm: true
+      - name: Install dependencies
+        uses: r-lib/actions/setup-r-dependencies@d3c5be51b12e724e68f33216ca3c148b66d5f0b6 # v2
+        with:
+          working-directory: servers/rstudio-editor
+          extra-packages: any::rcmdcheck
+          needs: check
+      - name: Run R CMD check
+        uses: r-lib/actions/check-r-package@d3c5be51b12e724e68f33216ca3c148b66d5f0b6 # v2
+        with:
+          working-directory: servers/rstudio-editor
+          upload-snapshots: true
+          build_args: c("--no-manual")
